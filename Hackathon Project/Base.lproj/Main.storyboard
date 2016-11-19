@@ -176,7 +176,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write description here" translatesAutoresizingMaskIntoConstraints="NO" id="33T-7E-54W">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write overview here" translatesAutoresizingMaskIntoConstraints="NO" id="33T-7E-54W">
                                 <rect key="frame" x="8" y="110" width="359" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

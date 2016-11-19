@@ -10,9 +10,9 @@ import UIKit
 
 class TripObject: NSObject {
     var title : String?
-    var startdate:String?
-    var enddate:String?
-    var caption:String?
+    var startdate:NSDate?
+    var enddate:NSDate?
+    var overview:String?
     var photos: [UIImage] = []
     var stations: [Station] = []
     var index: Int?

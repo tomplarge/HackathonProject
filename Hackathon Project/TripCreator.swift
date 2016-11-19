@@ -11,11 +11,19 @@ import UIKit
 class TripCreator: UIViewController {
 
     @IBOutlet weak var TripTitle: UITextField!
-        @IBOutlet weak var TripDescription: UITextView!
+    @IBOutlet weak var TripOverview: UITextView!
     @IBOutlet weak var StartDate: UIDatePicker!
     @IBOutlet weak var EndDate: UIDatePicker!
 
     @IBAction func DoneTripCreator(_ sender: Any) {
+        let Trip1 = TripObject()
+        Trip1.title = TripTitle.text
+        Trip1.startdate = StartDate.date as NSDate?
+        Trip1.enddate = EndDate.date as NSDate?
+        Trip1.overview = TripOverview.text
+        Trip1.photos = []
+        Trip1.stations = []
+        Trip1.index = 1
     }
     
     @IBAction func TapOffKeyboard(_ sender: Any) {
