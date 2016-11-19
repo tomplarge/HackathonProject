@@ -36,6 +36,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Click Agree</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Click Agree</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Click Yes</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -14,6 +14,11 @@
 		E4290BB81DE01F9100426366 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4290BB61DE01F9100426366 /* LaunchScreen.storyboard */; };
 		E4290BC31DE01F9100426366 /* Hackathon_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4290BC21DE01F9100426366 /* Hackathon_ProjectTests.swift */; };
 		E4290BCE1DE01F9100426366 /* Hackathon_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4290BCD1DE01F9100426366 /* Hackathon_ProjectUITests.swift */; };
+		E43D80151DE0AC00009F8CBB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43D80141DE0AC00009F8CBB /* HomeViewController.swift */; };
+		E43D80171DE0AF61009F8CBB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43D80161DE0AF61009F8CBB /* CameraViewController.swift */; };
+		E43D80191DE0BA26009F8CBB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43D80181DE0BA26009F8CBB /* MapViewController.swift */; };
+		E43D801B1DE0BDCB009F8CBB /* Stations.plist in Resources */ = {isa = PBXBuildFile; fileRef = E43D801A1DE0BDCB009F8CBB /* Stations.plist */; };
+		E43D801D1DE0BF12009F8CBB /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43D801C1DE0BF12009F8CBB /* Station.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		E4290BC91DE01F9100426366 /* Hackathon ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hackathon ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4290BCD1DE01F9100426366 /* Hackathon_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hackathon_ProjectUITests.swift; sourceTree = "<group>"; };
 		E4290BCF1DE01F9100426366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E43D80141DE0AC00009F8CBB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E43D80161DE0AF61009F8CBB /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		E43D80181DE0BA26009F8CBB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E43D801A1DE0BDCB009F8CBB /* Stations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stations.plist; sourceTree = "<group>"; };
+		E43D801C1DE0BF12009F8CBB /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,11 @@
 				E4290BB41DE01F9100426366 /* Assets.xcassets */,
 				E4290BB61DE01F9100426366 /* LaunchScreen.storyboard */,
 				E4290BB91DE01F9100426366 /* Info.plist */,
+				E43D80141DE0AC00009F8CBB /* HomeViewController.swift */,
+				E43D80161DE0AF61009F8CBB /* CameraViewController.swift */,
+				E43D80181DE0BA26009F8CBB /* MapViewController.swift */,
+				E43D801A1DE0BDCB009F8CBB /* Stations.plist */,
+				E43D801C1DE0BF12009F8CBB /* Station.swift */,
 			);
 			path = "Hackathon Project";
 			sourceTree = "<group>";
@@ -193,13 +208,17 @@
 				TargetAttributes = {
 					E4290BA91DE01F9100426366 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = TBX3J6EHDL;
+						LastSwiftMigration = 0810;
 					};
 					E4290BBD1DE01F9100426366 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0810;
 						TestTargetID = E4290BA91DE01F9100426366;
 					};
 					E4290BC81DE01F9100426366 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0810;
 						TestTargetID = E4290BA91DE01F9100426366;
 					};
 				};
@@ -231,6 +250,7 @@
 			files = (
 				E4290BB81DE01F9100426366 /* LaunchScreen.storyboard in Resources */,
 				E4290BB51DE01F9100426366 /* Assets.xcassets in Resources */,
+				E43D801B1DE0BDCB009F8CBB /* Stations.plist in Resources */,
 				E4290BB31DE01F9100426366 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,7 +277,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4290BB01DE01F9100426366 /* ViewController.swift in Sources */,
+				E43D80171DE0AF61009F8CBB /* CameraViewController.swift in Sources */,
 				E4290BAE1DE01F9100426366 /* AppDelegate.swift in Sources */,
+				E43D80191DE0BA26009F8CBB /* MapViewController.swift in Sources */,
+				E43D801D1DE0BF12009F8CBB /* Station.swift in Sources */,
+				E43D80151DE0AC00009F8CBB /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,10 +425,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TBX3J6EHDL;
 				INFOPLIST_FILE = "Hackathon Project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "self.Hackathon-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -412,10 +438,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TBX3J6EHDL;
 				INFOPLIST_FILE = "Hackathon Project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "self.Hackathon-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -427,6 +455,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "self.Hackathon-ProjectTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hackathon Project.app/Hackathon Project";
 			};
 			name = Debug;
@@ -439,6 +468,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "self.Hackathon-ProjectTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hackathon Project.app/Hackathon Project";
 			};
 			name = Release;
@@ -450,6 +480,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "self.Hackathon-ProjectUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Hackathon Project";
 			};
 			name = Debug;
@@ -461,6 +492,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "self.Hackathon-ProjectUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Hackathon Project";
 			};
 			name = Release;
@@ -484,6 +516,7 @@
 				E4290BD41DE01F9100426366 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4290BD51DE01F9100426366 /* Build configuration list for PBXNativeTarget "Hackathon ProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +525,7 @@
 				E4290BD71DE01F9100426366 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4290BD81DE01F9100426366 /* Build configuration list for PBXNativeTarget "Hackathon ProjectUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +534,7 @@
 				E4290BDA1DE01F9100426366 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
