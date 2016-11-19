@@ -51,6 +51,7 @@ class MapViewController: UIViewController{
         
         return annotations
     }
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate{
