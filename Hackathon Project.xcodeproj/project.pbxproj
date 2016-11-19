@@ -20,6 +20,8 @@
 		E43D80191DE0BA26009F8CBB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43D80181DE0BA26009F8CBB /* MapViewController.swift */; };
 		E43D801B1DE0BDCB009F8CBB /* Stations.plist in Resources */ = {isa = PBXBuildFile; fileRef = E43D801A1DE0BDCB009F8CBB /* Stations.plist */; };
 		E43D801D1DE0BF12009F8CBB /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43D801C1DE0BF12009F8CBB /* Station.swift */; };
+		E43D80211DE0E0E1009F8CBB /* TripObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43D80201DE0E0E1009F8CBB /* TripObject.swift */; };
+		E43D80231DE0E481009F8CBB /* TripCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43D80221DE0E481009F8CBB /* TripCreator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		E43D80181DE0BA26009F8CBB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E43D801A1DE0BDCB009F8CBB /* Stations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stations.plist; sourceTree = "<group>"; };
 		E43D801C1DE0BF12009F8CBB /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		E43D80201DE0E0E1009F8CBB /* TripObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripObject.swift; sourceTree = "<group>"; };
+		E43D80221DE0E481009F8CBB /* TripCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCreator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 				E4290BAF1DE01F9100426366 /* ViewController.swift */,
 				E4290BB11DE01F9100426366 /* Main.storyboard */,
 				E4290BB41DE01F9100426366 /* Assets.xcassets */,
+				E43D80221DE0E481009F8CBB /* TripCreator.swift */,
 				E4290BB61DE01F9100426366 /* LaunchScreen.storyboard */,
 				E4290BB91DE01F9100426366 /* Info.plist */,
 				E43D80141DE0AC00009F8CBB /* HomeViewController.swift */,
@@ -121,6 +126,7 @@
 				E43D801A1DE0BDCB009F8CBB /* Stations.plist */,
 				E43D801C1DE0BF12009F8CBB /* Station.swift */,
 				B91A885F1DE0F5E8001F85AE /* defaultlist.plist */,
+				E43D80201DE0E0E1009F8CBB /* TripObject.swift */,
 			);
 			path = "Hackathon Project";
 			sourceTree = "<group>";
@@ -280,8 +286,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43D80211DE0E0E1009F8CBB /* TripObject.swift in Sources */,
 				E4290BB01DE01F9100426366 /* ViewController.swift in Sources */,
 				E43D80171DE0AF61009F8CBB /* CameraViewController.swift in Sources */,
+				E43D80231DE0E481009F8CBB /* TripCreator.swift in Sources */,
 				E4290BAE1DE01F9100426366 /* AppDelegate.swift in Sources */,
 				E43D80191DE0BA26009F8CBB /* MapViewController.swift in Sources */,
 				E43D801D1DE0BF12009F8CBB /* Station.swift in Sources */,

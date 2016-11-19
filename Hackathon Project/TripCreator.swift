@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  TripCreator.swift
 //  Hackathon Project
 //
 //  Created by Tom Large on 11/19/16.
@@ -8,9 +8,20 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
-    @IBOutlet var BackgroundImageView: UIView!
+class TripCreator: UIViewController {
 
+    @IBOutlet weak var TripTitle: UITextField!
+        @IBOutlet weak var TripDescription: UITextView!
+    @IBOutlet weak var StartDate: UIDatePicker!
+    @IBOutlet weak var EndDate: UIDatePicker!
+
+    @IBAction func DoneTripCreator(_ sender: Any) {
+    }
+    
+    @IBAction func TapOffKeyboard(_ sender: Any) {
+       view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +33,6 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
 
     /*
     // MARK: - Navigation
