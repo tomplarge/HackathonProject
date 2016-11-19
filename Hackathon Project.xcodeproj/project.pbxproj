@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B91A88601DE0F5E8001F85AE /* defaultlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = B91A885F1DE0F5E8001F85AE /* defaultlist.plist */; };
 		E4290BAE1DE01F9100426366 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4290BAD1DE01F9100426366 /* AppDelegate.swift */; };
 		E4290BB01DE01F9100426366 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4290BAF1DE01F9100426366 /* ViewController.swift */; };
 		E4290BB31DE01F9100426366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4290BB11DE01F9100426366 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B91A885F1DE0F5E8001F85AE /* defaultlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultlist.plist; sourceTree = "<group>"; };
 		E4290BAA1DE01F9100426366 /* Hackathon Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hackathon Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4290BAD1DE01F9100426366 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4290BAF1DE01F9100426366 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				E43D80181DE0BA26009F8CBB /* MapViewController.swift */,
 				E43D801A1DE0BDCB009F8CBB /* Stations.plist */,
 				E43D801C1DE0BF12009F8CBB /* Station.swift */,
+				B91A885F1DE0F5E8001F85AE /* defaultlist.plist */,
 				E43D80201DE0E0E1009F8CBB /* TripObject.swift */,
 			);
 			path = "Hackathon Project";
@@ -258,6 +261,7 @@
 				E4290BB51DE01F9100426366 /* Assets.xcassets in Resources */,
 				E43D801B1DE0BDCB009F8CBB /* Stations.plist in Resources */,
 				E4290BB31DE01F9100426366 /* Main.storyboard in Resources */,
+				B91A88601DE0F5E8001F85AE /* defaultlist.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
