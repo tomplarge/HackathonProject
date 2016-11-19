@@ -165,7 +165,7 @@
                                     <navigationItem title="Start New Trip" id="yWX-yW-0uw">
                                         <barButtonItem key="leftBarButtonItem" title="Home" id="6rQ-J1-I4E">
                                             <connections>
-                                                <segue destination="KCU-tH-C4g" kind="show" id="suO-oj-vPp"/>
+                                                <segue destination="1zX-0t-kEC" kind="show" id="tQB-C9-haO"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="7ye-dW-Kbu">
@@ -194,7 +194,7 @@
                     <connections>
                         <outlet property="EndDate" destination="RB5-aF-Wm7" id="2xZ-Yy-IvF"/>
                         <outlet property="StartDate" destination="s8n-SL-dnY" id="6RO-1I-aGf"/>
-                        <outlet property="TripDescription" destination="33T-7E-54W" id="f3B-YE-Alo"/>
+                        <outlet property="TripOverview" destination="33T-7E-54W" id="mAD-j8-vCp"/>
                         <outlet property="TripTitle" destination="Tdm-TY-0EP" id="MRd-QP-THj"/>
                     </connections>
                 </viewController>
@@ -264,7 +264,4 @@
     <resources>
         <image name="Photo" width="2560" height="1440"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="suO-oj-vPp"/>
-    </inferredMetricsTieBreakers>
 </document>

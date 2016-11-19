@@ -10,10 +10,11 @@ import UIKit
 import MapKit
 
 class Station: NSObject, MKAnnotation {
-    var title : String?
+    var caption : String?
     var subtitle: String?
     var latitude: Double
     var longitude: Double
+    var photo: UIImage?
     
     var coordinate: (CLLocationCoordinate2D){
         return CLLocationCoordinate2D (latitude: latitude, longitude: longitude)

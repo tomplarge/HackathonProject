@@ -9,21 +9,26 @@
 import UIKit
 
 class TripCreator: UIViewController {
-
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet weak var TripTitle: UITextField!
     @IBOutlet weak var TripOverview: UITextView!
     @IBOutlet weak var StartDate: UIDatePicker!
     @IBOutlet weak var EndDate: UIDatePicker!
 
     @IBAction func DoneTripCreator(_ sender: Any) {
-        let Trip1 = TripObject()
-        Trip1.title = TripTitle.text
-        Trip1.startdate = StartDate.date as NSDate?
-        Trip1.enddate = EndDate.date as NSDate?
-        Trip1.overview = TripOverview.text
-        Trip1.photos = []
-        Trip1.stations = []
-        Trip1.index = 1
+        let Trip = TripObject()
+        Trip.title = TripTitle.text
+        Trip.startdate = StartDate.date as NSDate?
+        Trip.enddate = EndDate.date as NSDate?
+        Trip.overview = TripOverview.text
+        Trip.photos = []
+        Trip.stations = []
+        Trip.index = appDelegate.TripArray.endIndex
+        
+        appDelegate.TripArray.append(Trip)
+        print("COUNT \(appDelegate.TripArray.count)")
+        print("ENDIND \(appDelegate.TripArray.endIndex)")
     }
     
     @IBAction func TapOffKeyboard(_ sender: Any) {
@@ -35,12 +40,6 @@ class TripCreator: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation
