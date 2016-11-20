@@ -27,6 +27,8 @@ class TripCreator: UIViewController {
         Trip.index = appDelegate.TripArray.endIndex
         
         appDelegate.TripArray.append(Trip)
+        appDelegate.currentTripBool = true
+        
         print("COUNT \(appDelegate.TripArray.count)")
         print("ENDIND \(appDelegate.TripArray.endIndex)")
     }

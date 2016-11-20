@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var ImageView: UIImageView!
@@ -17,14 +17,28 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     var long:CLLocationDegrees?
     @IBOutlet weak var TextField: UITextField!
     
+    let locationManager = CLLocationManager()
+    var currentLat:CLLocationDegrees?
+    var currentLong:CLLocationDegrees?
+    
     let photoArr: [String] = []
-   // let arrayOneKey = "Item 1"
-  //  let arrayTwoKey = "Item 2"
-  //  var arrayOneID: [AnyObject] = [42.20 as AnyObject, -80.0 as AnyObject, 1 as AnyObject, "First Picture" as AnyObject]
-   // var arrayTwoID:[AnyObject] = [42.20 as AnyObject,-82.0 as AnyObject,1 as AnyObject,"Second Picture" as AnyObject]
+    // let arrayOneKey = "Item 1"
+    //  let arrayTwoKey = "Item 2"
+    //  var arrayOneID: [AnyObject] = [42.20 as AnyObject, -80.0 as AnyObject, 1 as AnyObject, "First Picture" as AnyObject]
+    // var arrayTwoID:[AnyObject] = [42.20 as AnyObject,-82.0 as AnyObject,1 as AnyObject,"Second Picture" as AnyObject]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let curr = appDelegate.currentTripBool! as? Bool {
+            if curr == true {
+                //
+            } else {
+                //
+            }
+        }
+        self.locationManager.requestAlwaysAuthorization()
+        
     }
     
     @IBAction func LibraryButton(_ sender: Any) {
@@ -41,6 +55,13 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         CameraUI.allowsEditing = true
         CameraUI.sourceType = UIImagePickerControllerSourceType.camera
         self.present(CameraUI, animated: true, completion: nil)
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.requestLocation()
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -58,6 +79,10 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UIN
             let location = asset?.location   //then do something with this data -> save to plist
             lat = location?.coordinate.latitude
             long = location?.coordinate.longitude
+        } else {
+            locationManager.stopUpdatingLocation()
+            lat = currentLat
+            long = currentLong
         }
         
         dismiss(animated: true, completion: nil)
@@ -79,10 +104,13 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UIN
             caption = text
         }
         
-        let arrayEntry:[AnyObject] = [lat as AnyObject!, long as AnyObject!, tripNum as AnyObject, caption as AnyObject!]
-        print(arrayEntry)
-        saveLocationData(id: arrayEntry, key: arrayKey, plist: plistString)
-        
+        if (lat != nil) && (long != nil) {
+            let arrayEntry:[AnyObject] = [self.lat as AnyObject!, self.long as AnyObject!, tripNum as AnyObject, caption as AnyObject!]
+            print(arrayEntry)
+            self.saveLocationData(id: arrayEntry, key: arrayKey, plist: plistString)
+        } else {
+            print("error: nil lat or long")
+        }
         view.endEditing(true)
         
     }
@@ -105,4 +133,13 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         print("Saved \(plist) file is --> \(resultDictionary?.description)")
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var locValue: CLLocationCoordinate2D = (manager.location?.coordinate)!
+        guard let location = locations.first else { return }
+        currentLat = location.coordinate.latitude
+        currentLong = location.coordinate.longitude
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
 }
