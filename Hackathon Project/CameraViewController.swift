@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import MBProgressHUD
 
 class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, CLLocationManagerDelegate {
     
@@ -21,24 +22,39 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     var currentLat:CLLocationDegrees?
     var currentLong:CLLocationDegrees?
     
-    let photoArr: [String] = []
-    // let arrayOneKey = "Item 1"
-    //  let arrayTwoKey = "Item 2"
-    //  var arrayOneID: [AnyObject] = [42.20 as AnyObject, -80.0 as AnyObject, 1 as AnyObject, "First Picture" as AnyObject]
-    // var arrayTwoID:[AnyObject] = [42.20 as AnyObject,-82.0 as AnyObject,1 as AnyObject,"Second Picture" as AnyObject]
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            backgroundImageView.backgroundColor = UIColor.clear
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            
+            blurEffectView.frame = UIScreen.main.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            backgroundImageView.addSubview(blurEffectView)
+        } else {
+            backgroundImageView.backgroundColor = UIColor.black
+        }
         
-        if let curr = appDelegate.currentTripBool! as? Bool {
-            if curr == true {
-                //
-            } else {
-                //
-            }
+        if (appDelegate.currentTripBool != nil) && (appDelegate.currentTripBool != false) {
+            //
+        } else {
+            self.alert(title: "Wait!", message: "You aren't on a trip right now, start one to add pictures!")
         }
         self.locationManager.requestAlwaysAuthorization()
+    }
+    private func alert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let backAction = UIAlertAction(title: "Start a Trip", style: .cancel) { (action) in
+            self.performSegue(withIdentifier: "CancelCameraSegue", sender: nil)
+        }
+        alertController.addAction(backAction)
         
+        present(alertController, animated: true) {
+            // optional code for what happens after the alert controller has finished presenting
+        }
     }
     
     @IBAction func LibraryButton(_ sender: Any) {
@@ -55,13 +71,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         CameraUI.allowsEditing = true
         CameraUI.sourceType = UIImagePickerControllerSourceType.camera
         self.present(CameraUI, animated: true, completion: nil)
-        
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.delegate = self
-            
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.requestLocation()
-        }
+
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -74,15 +84,24 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         currentTrip.photos.append(originalImage)
         
         if picker.sourceType == UIImagePickerControllerSourceType.photoLibrary {
+            print("PHOTOLIBRARY")
             let url: NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
             let asset = PHAsset.fetchAssets(withALAssetURLs: [url as URL], options: nil).firstObject
             let location = asset?.location   //then do something with this data -> save to plist
             lat = location?.coordinate.latitude
             long = location?.coordinate.longitude
         } else {
-            locationManager.stopUpdatingLocation()
-            lat = currentLat
-            long = currentLong
+            print("CAMERA")
+            
+            if CLLocationManager.locationServicesEnabled(){
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                
+                locationManager.delegate = self
+                
+                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                locationManager.requestLocation()
+            }
+
         }
         
         dismiss(animated: true, completion: nil)
@@ -112,7 +131,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UIN
             print("error: nil lat or long")
         }
         view.endEditing(true)
-        
+
     }
     
     func saveLocationData(id:[AnyObject], key:String, plist:String) {
@@ -138,6 +157,10 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         guard let location = locations.first else { return }
         currentLat = location.coordinate.latitude
         currentLong = location.coordinate.longitude
+        lat = currentLat
+        long = currentLong
+        MBProgressHUD.hide(for: self.view, animated: true)
+        print("DID UPDATE")
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)

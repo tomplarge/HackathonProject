@@ -11,7 +11,7 @@ import MapKit
 
 class MapViewController: UIViewController{
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
+    
     @IBOutlet weak var MapView: MKMapView!
     @IBOutlet weak var MapSearchBar: UISearchBar!
     
@@ -23,57 +23,60 @@ class MapViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.locationManager.requestAlwaysAuthorization()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if (appDelegate.TripArray.count <= 0){
+            self.alert(title: "Wait!", message: "You don't have any trips yet, start one to add pictures!")
+        } else {
         if CLLocationManager.locationServicesEnabled(){
             locationManager.delegate = self
-        
+            
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.requestLocation()
         }
-            let annotations = getMapAnnotations()
+        let annotations = getMapAnnotations()
         MapView.addAnnotations(annotations)
+        }
     }
-
+    
     
     func getMapAnnotations() -> [Station]{
         var annotations:Array = [Station]()
-
+        
         let currentTripIndex = appDelegate.TripArray.count - 1
         let currentTrip = appDelegate.TripArray[currentTripIndex] as! TripObject
         let plistName = "Trip\(currentTripIndex)"
-
+        
         let numPhotos = currentTrip.photos.count - 1
-        
-        for index in 0...numPhotos {
-            print("FOR LOOP!!!!")
-            let key = "\(index)"
-            let currentArray:[AnyObject] = loadLocationData(key: key, plistName: plistName)
-            let lat = currentArray[0] as! Double
-            let long = currentArray[1] as! Double
-            let annotation = Station(latitude: lat, longitude: long)
-            annotation.caption = currentArray[3] as! String
-            annotations.append(annotation)
-        }
-        return annotations
-     /*
-        var annotations: Array = [Station]()
-    
-        var stations: NSArray?
-        if let path = Bundle.main.path(forResource: "Stations",ofType: "plist"){
-            stations = NSArray(contentsOfFile: path)
-        }
-        
-        if let items = stations {
-            for item in items{
-                let lat = (item as AnyObject).value(forKey: "lat")
-                let long = (item as AnyObject).value(forKey: "long")
-                let annotation = Station(latitude: lat as! Double, longitude: long as! Double)
-                annotation.title = (item as AnyObject).value(forKey: "title") as? String
+        if numPhotos >= 0 {
+            for index in 0...numPhotos {
+                let key = "\(index)"
+                print("FOR LOOP!!! with key \(key)!")
+                let currentArray:[AnyObject] = loadLocationData(key: key, plistName: plistName)
+                let lat = currentArray[0] as! Double
+                let long = currentArray[1] as! Double
+                let annotation = Station(latitude: lat, longitude: long)
+                annotation.caption = currentArray[3] as! String
                 annotations.append(annotation)
             }
         }
         return annotations
- */
     }
+    
+    private func alert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let backAction = UIAlertAction(title: "Start a Trip", style: .cancel) { (action) in
+            self.performSegue(withIdentifier: "CancelMapSegue", sender: nil)
+        }
+        alertController.addAction(backAction)
+        
+        present(alertController, animated: true) {
+            // optional code for what happens after the alert controller has finished presenting
+        }
+    }
+    
+    
     func loadLocationData(key:String, plistName:String) -> [AnyObject]{
         
         // getting path to plist

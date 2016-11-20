@@ -16,7 +16,28 @@ class TripCreator: UIViewController {
     @IBOutlet weak var StartDate: UIDatePicker!
     @IBOutlet weak var EndDate: UIDatePicker!
 
-    @IBAction func DoneTripCreator(_ sender: Any) {
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            backgroundImageView.backgroundColor = UIColor.clear
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            
+            blurEffectView.frame = UIScreen.main.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            backgroundImageView.addSubview(blurEffectView)
+        } else {
+            backgroundImageView.backgroundColor = UIColor.black
+        }
+    }
+    
+    @IBAction func TapOffKeyboard(_ sender: Any) {
+       view.endEditing(true)
+    }
+    
+    @IBAction func DoneTripCreator(_ sender: AnyObject) {
         let Trip = TripObject()
         Trip.title = TripTitle.text
         Trip.startdate = StartDate.date as NSDate?
@@ -31,26 +52,10 @@ class TripCreator: UIViewController {
         
         print("COUNT \(appDelegate.TripArray.count)")
         print("ENDIND \(appDelegate.TripArray.endIndex)")
+        
+        self.performSegue(withIdentifier: "DoneStartTripSegue", sender: nil)
     }
-    
-    @IBAction func TapOffKeyboard(_ sender: Any) {
-       view.endEditing(true)
+    @IBAction func onCancel(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "DoneStartTripSegue", sender: nil)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
